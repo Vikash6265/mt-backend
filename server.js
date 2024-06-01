@@ -1,6 +1,7 @@
 const express = require("express");
 const ConnectDB = require("./config/db_config");
 require('dotenv').config()
+const cors = require('cors')
 
 const app = express();
 
@@ -10,8 +11,10 @@ const PORT = process.env.PORT || 5000;
 
 ConnectDB();
 
-// Body Parser
 
+app.use(cors())
+
+// Body Parser
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
